@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 
 // middleware
 const corsConfig = {
-  origin: "https://naiem-hasan.web.app",
+  origin: "*",
   credentials: true,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
 };
@@ -35,7 +35,7 @@ app.post(`/api/contact`, async (req, res) => {
     from: process.env.EMAIL_USER,
     to: process.env.EMAIL_RECEIVER,
     subject: `Contact form submission from ${name}`,
-    text: `Name: ${name}\nEmail: ${email}\nMessage:${message}`,
+    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
   };
 
   try {
