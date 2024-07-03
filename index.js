@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 });
 
 app.post(`/api/contact`, async (req, res) => {
-  const { name, email, message } = req.body;
+  const { name, email, subject, message } = req.body;
 
   // Configure your email transport
   const transporter = nodemailer.createTransport({
@@ -32,10 +32,10 @@ app.post(`/api/contact`, async (req, res) => {
   });
 
   const mailOptions = {
-    from: process.env.EMAIL_USER,
+    from: `${process.env.EMAIL_NAME} <${process.env.EMAIL_USER}>`,
     to: process.env.EMAIL_RECEIVER,
-    subject: `Contact form submission from ${name}`,
-    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+    subject: subject,
+    text: `Name: ${name}\nSubject: ${subject}\nEmail: ${email}\nMessage: ${message}`,
   };
 
   try {
