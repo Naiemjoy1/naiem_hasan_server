@@ -32,7 +32,7 @@ app.post(`/api/contact`, async (req, res) => {
   });
 
   const mailOptions = {
-    from: `${process.env.EMAIL_NAME} <${process.env.EMAIL_USER}>`,
+    from: `${name} <${process.env.EMAIL_USER}>`,
     to: process.env.EMAIL_RECEIVER,
     subject: subject,
     text: `Name: ${name}\nSubject: ${subject}\nEmail: ${email}\nMessage: ${message}`,
